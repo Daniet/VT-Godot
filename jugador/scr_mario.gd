@@ -2,7 +2,8 @@ extends KinematicBody2D
 
 var GRAVEDAD = 200
 var Velocidad = Vector2()
-var vel_lateral = 50
+export var vel_lateral = 50
+export var vel_max = 150
 
 func _ready():
 	set_fixed_process(true)
@@ -18,6 +19,8 @@ func  _fixed_process(delta):
 		Velocidad.x -= vel_lateral
 	else:
 		Velocidad.x = 0
+
+	Velocidad.x = clamp(Velocidad.x, -vel_max, vel_max)
 
 	var movimiento = Velocidad * delta
 	move(movimiento)
