@@ -1,8 +1,18 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://jugador/scr_mario.gd" type="Script" id=1]
 [ext_resource path="res://jugador/spr_mario.png" type="Texture" id=2]
 [ext_resource path="res://nivel1/ground_tile_by_cutandreil-d3idat3.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 32.4923, 33.2009 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 31.9344, 29.0046 )
 
 [node name="Nivel1" type="Node2D"]
 
@@ -10,6 +20,9 @@
 
 transform/pos = Vector2( 550, 200 )
 input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
@@ -20,11 +33,20 @@ script/script = ExtResource( 1 )
 transform/scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 2 )
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mario"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
-transform/pos = Vector2( 310.637, 516.479 )
+transform/pos = Vector2( 547.802, 429.629 )
 transform/scale = Vector2( 9.24515, 1 )
 input/pickable = false
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
 constant_linear_velocity = Vector2( 0, 0 )
@@ -36,5 +58,11 @@ bounce = 0.0
 
 transform/scale = Vector2( 2, 1.9 )
 texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
 
 
