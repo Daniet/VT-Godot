@@ -62,6 +62,7 @@ collision/margin = 0.08
 script/script = ExtResource( 1 )
 vel_lateral = 50
 vel_max = 150
+vel_salto = 150
 
 [node name="spr_Mario" type="Sprite" parent="Mario"]
 

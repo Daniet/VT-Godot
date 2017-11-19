@@ -4,8 +4,10 @@ var GRAVEDAD = 200
 var Velocidad = Vector2()
 export var vel_lateral = 50
 export var vel_max = 150
+export var vel_salto = 150
 
 var anim_play
+var salto = false
 
 func _ready():
 	set_fixed_process(true)
@@ -29,6 +31,10 @@ func  _fixed_process(delta):
 	else:
 		Velocidad.x = 0
 
+	if Input.is_action_pressed('ui_up') && !salto:
+		Velocidad.y -= vel_salto
+		salto = true
+
 	Velocidad.x = clamp(Velocidad.x, -vel_max, vel_max)
 
 	var movimiento = Velocidad * delta
@@ -39,3 +45,5 @@ func  _fixed_process(delta):
 		movimiento = normal.slide(movimiento)
 		Velocidad = normal.slide(Velocidad)
 		move(movimiento)
+		if normal.y < 0:
+			salto = false
