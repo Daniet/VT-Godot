@@ -13,7 +13,7 @@ extents = Vector2( 32.4923, 33.2009 )
 
 resource/name = "mover"
 length = 0.4
-loop = true
+loop = false
 step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("spr_Mario:frame")
@@ -85,7 +85,7 @@ anims/mover = SubResource( 5 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
-autoplay = "mover"
+autoplay = ""
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
