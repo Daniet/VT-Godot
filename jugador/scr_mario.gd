@@ -4,7 +4,7 @@ var GRAVEDAD = 200
 var Velocidad = Vector2()
 export var vel_lateral = 50
 export var vel_max = 150
-export var vel_salto = 150
+var vel_salto = 300
 
 var anim_play
 var salto = false
