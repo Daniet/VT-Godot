@@ -1,13 +1,15 @@
-[gd_scene load_steps=17 format=1]
+[gd_scene load_steps=20 format=1]
 
-[ext_resource path="res://jugador/scr_mario.gd" type="Script" id=1]
-[ext_resource path="res://jugador/sprites_super_mario.png" type="Texture" id=2]
-[ext_resource path="res://nivel1/ground_tile_by_cutandreil-d3idat3.png" type="Texture" id=3]
-[ext_resource path="res://tiles/1.png" type="Texture" id=4]
-[ext_resource path="res://tiles/2.png" type="Texture" id=5]
-[ext_resource path="res://tiles/3.png" type="Texture" id=6]
-[ext_resource path="res://tiles/4.png" type="Texture" id=7]
-[ext_resource path="res://tiles/title.xml" type="TileSet" id=8]
+[ext_resource path="res://tiles/title.xml" type="TileSet" id=1]
+[ext_resource path="res://jugador/scr_mario.gd" type="Script" id=2]
+[ext_resource path="res://jugador/sprites_super_mario.png" type="Texture" id=3]
+[ext_resource path="res://nivel1/ground_tile_by_cutandreil-d3idat3.png" type="Texture" id=4]
+[ext_resource path="res://tiles/1.png" type="Texture" id=5]
+[ext_resource path="res://tiles/2.png" type="Texture" id=6]
+[ext_resource path="res://tiles/3.png" type="Texture" id=7]
+[ext_resource path="res://tiles/4.png" type="Texture" id=8]
+[ext_resource path="res://items/moneda.gd" type="Script" id=9]
+[ext_resource path="res://items/items.png" type="Texture" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -72,11 +74,36 @@ extents = Vector2( 31.9495, 31.8852 )
 custom_solver_bias = 0.0
 extents = Vector2( 64.2746, 64.0595 )
 
+[sub_resource type="RectangleShape2D" id=9]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
 [node name="Nivel1" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 64, 64 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 327684, 2, 327685, 2, 327686, 3, 327687, 2, 393230, 4, 524288, 1, 524289, 1, 524290, 1, 524291, 1, 524292, 1, 524293, 1, 524294, 1, 524295, 1, 524296, 1, 524297, 1, 524298, 1, 524299, 1, 524300, 1, 524301, 1, 524302, 1, 524303, 1, 524304, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Mario" type="KinematicBody2D" parent="."]
 
-editor/display_folded = true
 transform/pos = Vector2( 550, 200 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
@@ -85,13 +112,13 @@ shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
-script/script = ExtResource( 1 )
+script/script = ExtResource( 2 )
 vel_lateral = 50
 vel_max = 150
 
 [node name="spr_Mario" type="Sprite" parent="Mario"]
 
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 hframes = 4
 frame = 3
 
@@ -113,6 +140,25 @@ playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
 
+[node name="Camera2D" type="Camera2D" parent="Mario"]
+
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit/left = -10000000
+limit/top = -10000000
+limit/right = 10000000
+limit/bottom = 10000000
+drag_margin/h_enabled = true
+drag_margin/v_enabled = true
+smoothing/enable = true
+smoothing/speed = 5.0
+drag_margin/left = 0.2
+drag_margin/top = 0.2
+drag_margin/right = 0.2
+drag_margin/bottom = 0.2
+
 [node name="Suelo" type="StaticBody2D" parent="."]
 
 editor/display_folded = true
@@ -133,7 +179,7 @@ bounce = 0.0
 [node name="Sprite" type="Sprite" parent="Suelo"]
 
 transform/scale = Vector2( 2, 1.9 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Suelo"]
 
@@ -155,7 +201,7 @@ autoplay = "rotar_suelo"
 [node name="Sprite" type="Sprite" parent="."]
 
 editor/display_folded = true
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 region = true
 region_rect = Rect2( 0, 0, 64, 64 )
 
@@ -182,7 +228,7 @@ _update_shape_index = 0
 
 editor/display_folded = true
 transform/pos = Vector2( -0.397217, 72.69 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 region = true
 region_rect = Rect2( 0, 0, 64, 64 )
 
@@ -209,7 +255,7 @@ _update_shape_index = 0
 
 editor/display_folded = true
 transform/pos = Vector2( -0.794418, 142.997 )
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 region = true
 region_rect = Rect2( 0, 0, 64, 64 )
 
@@ -236,7 +282,7 @@ _update_shape_index = 0
 
 editor/display_folded = true
 transform/pos = Vector2( -115.589, 78.6482 )
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 region = true
 region_rect = Rect2( 0, 0, 128, 128 )
 
@@ -259,22 +305,35 @@ shape = SubResource( 8 )
 trigger = false
 _update_shape_index = 0
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="Monedas" type="Area2D" parent="."]
 
-mode = 0
-tile_set = ExtResource( 8 )
-cell/size = Vector2( 64, 64 )
-cell/quadrant_size = 16
-cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
-cell/half_offset = 2
-cell/tile_origin = 0
-cell/y_sort = false
-collision/use_kinematic = false
-collision/friction = 1.0
-collision/bounce = 0.0
-collision/layers = 1
-collision/mask = 1
-occluder/light_mask = 1
-tile_data = IntArray( 327684, 2, 327685, 2, 327686, 3, 327687, 2, 393230, 4, 524288, 1, 524289, 1, 524290, 1, 524291, 1, 524292, 1, 524293, 1, 524294, 1, 524295, 1, 524296, 1, 524297, 1, 524298, 1, 524299, 1, 524300, 1, 524301, 1, 524302, 1, 524303, 1, 524304, 1 )
+transform/pos = Vector2( 309.141, 266.054 )
+input/pickable = true
+shapes/0/shape = SubResource( 9 )
+shapes/0/transform = Matrix32( 0.783714, 0, 0, 1.35756, 3.80894, 3.80918 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 9 )
+
+[node name="Sprite" type="Sprite" parent="Monedas"]
+
+transform/scale = Vector2( 1.8, 1.8 )
+texture = ExtResource( 10 )
+vframes = 4
+hframes = 9
+frame = 31
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Monedas"]
+
+transform/pos = Vector2( 3.80894, 3.80918 )
+transform/scale = Vector2( 0.783714, 1.35756 )
+shape = SubResource( 9 )
+trigger = false
+_update_shape_index = 0
+
+[connection signal="body_enter" from="Monedas" to="Monedas" method="_on_Monedas_body_enter"]
 
 
