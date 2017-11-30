@@ -9,6 +9,8 @@ var vel_salto = 300
 var anim_play
 var salto = false
 
+var hongoR = preload('res://items/HongoR.tscn')
+
 func _ready():
 	set_fixed_process(true)
 	Velocidad.x = 0
@@ -52,4 +54,6 @@ func  _fixed_process(delta):
 func procesar_colision():
 	var obj_colision = get_collider()
 	if obj_colision.is_in_group('cuboS'):
-		print('Funciona')
+		var hongoNuevo = hongoR.instance()
+		get_parent().add_child(hongoNuevo)
+		hongoNuevo.set_global_pos(Vector2(obj_colision.get_global_pos().x, obj_colision.get_global_pos().y - 30))
