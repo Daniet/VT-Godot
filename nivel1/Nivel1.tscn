@@ -97,12 +97,14 @@ collision/bounce = 0.0
 collision/layers = 1
 collision/mask = 1
 occluder/light_mask = 1
-tile_data = IntArray( 327684, 2, 327685, 2, 327686, 3, 327687, 2, 393230, 4, 524288, 1, 524289, 1, 524290, 1, 524291, 1, 524292, 1, 524293, 1, 524294, 1, 524295, 1, 524296, 1, 524297, 1, 524298, 1, 524299, 1, 524300, 1, 524301, 1, 524302, 1, 524303, 1, 524304, 1 )
+tile_data = IntArray( 327684, 2, 327685, 3, 327686, 2, 327687, 2, 393230, 4, 524289, 1, 524290, 1, 524291, 1, 524292, 1, 524293, 1, 524294, 1, 524295, 1, 524296, 1, 524297, 1, 524298, 1, 524299, 1, 524300, 1, 524301, 1, 524302, 1, 524303, 1, 524304, 1 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Mario" type="KinematicBody2D" parent="."]
+[node name="Mario" type="KinematicBody2D" parent="." groups=[
+"player",
+]]
 
 transform/pos = Vector2( 550, 200 )
 input/pickable = false
