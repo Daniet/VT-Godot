@@ -41,9 +41,15 @@ func  _fixed_process(delta):
 	move(movimiento)
 
 	if is_colliding():
+		procesar_colision()
 		var normal = get_collision_normal()
 		movimiento = normal.slide(movimiento)
 		Velocidad = normal.slide(Velocidad)
 		move(movimiento)
 		if normal.y < 0:
 			salto = false
+
+func procesar_colision():
+	var obj_colision = get_collider()
+	if obj_colision.is_in_group('cuboS'):
+		print('Funciona')

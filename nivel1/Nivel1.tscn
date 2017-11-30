@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=1]
+[gd_scene load_steps=21 format=1]
 
 [ext_resource path="res://tiles/title.xml" type="TileSet" id=1]
 [ext_resource path="res://jugador/scr_mario.gd" type="Script" id=2]
@@ -74,6 +74,11 @@ extents = Vector2( 31.9495, 31.8852 )
 custom_solver_bias = 0.0
 extents = Vector2( 64.2746, 64.0595 )
 
+[sub_resource type="RectangleShape2D" id=10]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
 [sub_resource type="RectangleShape2D" id=9]
 
 custom_solver_bias = 0.0
@@ -97,7 +102,7 @@ collision/bounce = 0.0
 collision/layers = 1
 collision/mask = 1
 occluder/light_mask = 1
-tile_data = IntArray( 327684, 2, 327685, 3, 327686, 2, 327687, 2, 393230, 4, 524289, 1, 524290, 1, 524291, 1, 524292, 1, 524293, 1, 524294, 1, 524295, 1, 524296, 1, 524297, 1, 524298, 1, 524299, 1, 524300, 1, 524301, 1, 524302, 1, 524303, 1, 524304, 1 )
+tile_data = IntArray( 327684, 2, 327686, 2, 327687, 2, 393230, 4, 524289, 1, 524290, 1, 524291, 1, 524292, 1, 524293, 1, 524294, 1, 524295, 1, 524296, 1, 524297, 1, 524298, 1, 524299, 1, 524300, 1, 524301, 1, 524302, 1, 524303, 1, 524304, 1 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -106,6 +111,7 @@ __meta__ = {
 "player",
 ]]
 
+editor/display_folded = true
 transform/pos = Vector2( 550, 200 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
@@ -311,8 +317,8 @@ _update_shape_index = 0
 
 transform/pos = Vector2( 309.141, 266.054 )
 input/pickable = true
-shapes/0/shape = SubResource( 9 )
-shapes/0/transform = Matrix32( 0.783714, 0, 0, 1.35756, 3.80894, 3.80918 )
+shapes/0/shape = SubResource( 10 )
+shapes/0/transform = Matrix32( 0.726468, 0, 0, 1.23004, 3.47598, 4.2365 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -330,8 +336,41 @@ frame = 31
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Monedas"]
 
-transform/pos = Vector2( 3.80894, 3.80918 )
-transform/scale = Vector2( 0.783714, 1.35756 )
+transform/pos = Vector2( 3.47598, 4.2365 )
+transform/scale = Vector2( 0.726468, 1.23004 )
+shape = SubResource( 10 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Cubo" type="StaticBody2D" parent="." groups=[
+"cuboS",
+]]
+
+transform/pos = Vector2( 363.164, 363.379 )
+input/pickable = false
+shapes/0/shape = SubResource( 9 )
+shapes/0/transform = Matrix32( 3.22783, 0, 0, 3.19481, -10.9465, -11.4143 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="Sprite" type="Sprite" parent="Cubo"]
+
+transform/scale = Vector2( 4, 4 )
+texture = ExtResource( 10 )
+vframes = 4
+hframes = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cubo" groups=[
+"player",
+]]
+
+transform/pos = Vector2( -10.9465, -11.4143 )
+transform/scale = Vector2( 3.22783, 3.19481 )
 shape = SubResource( 9 )
 trigger = false
 _update_shape_index = 0
