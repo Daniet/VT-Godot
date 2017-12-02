@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=1]
+[gd_scene load_steps=24 format=1]
 
 [ext_resource path="res://tiles/title.xml" type="TileSet" id=1]
 [ext_resource path="res://jugador/scr_mario.gd" type="Script" id=2]
@@ -12,7 +12,6 @@
 [ext_resource path="res://items/items.png" type="Texture" id=10]
 [ext_resource path="res://npcs/caradenabo.gd" type="Script" id=11]
 [ext_resource path="res://npcs/smb_enemies_sheet.png" type="Texture" id=12]
-[ext_resource path="res://items/hongoR.gd" type="Script" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -91,11 +90,6 @@ extents = Vector2( 10, 10 )
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
-
-[sub_resource type="RectangleShape2D" id=12]
-
-custom_solver_bias = 0.0
-extents = Vector2( 38.8859, 38.5699 )
 
 [node name="Nivel1" type="Node2D"]
 
@@ -414,36 +408,6 @@ hframes = 15
 transform/pos = Vector2( -18.9517, -13.6132 )
 transform/scale = Vector2( 2.45782, 2.45183 )
 shape = SubResource( 11 )
-trigger = false
-_update_shape_index = 0
-
-[node name="HongoR" type="KinematicBody2D" parent="."]
-
-transform/pos = Vector2( 309.759, 110.537 )
-input/pickable = false
-shapes/0/shape = SubResource( 12 )
-shapes/0/transform = Matrix32( 0.806592, 0, 0, 0.847956, 11.667, -1.11164 )
-shapes/0/trigger = false
-collision/layers = 1
-collision/mask = 1
-collision/margin = 0.08
-script/script = ExtResource( 13 )
-
-[node name="Sprite" type="Sprite" parent="HongoR"]
-
-visibility/behind_parent = true
-transform/pos = Vector2( -4.21221, 0.716972 )
-transform/scale = Vector2( 4, 4 )
-texture = ExtResource( 10 )
-vframes = 4
-hframes = 9
-frame = 15
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HongoR"]
-
-transform/pos = Vector2( 11.667, -1.11164 )
-transform/scale = Vector2( 0.806592, 0.847956 )
-shape = SubResource( 12 )
 trigger = false
 _update_shape_index = 0
 

@@ -16,6 +16,15 @@ func _fixed_process(delta):
 	velocidad.y += GRAVEDAD * delta
 	#Maximo de velocidad
 	velocidad.x = clamp(velocidad.x, -velocidad_max, velocidad_max)
+	
+	if !test_move(Vector2(0, 1)):
+		if get_node('Sprite').is_flipped_h():
+			set_global_pos(Vector2(get_global_pos().x + 2, get_global_pos().y))
+		else:
+			set_global_pos(Vector2(get_global_pos().x - 2, get_global_pos().y))
+		
+		get_node('Sprite').set_flip_h(!get_node('Sprite').is_flipped_h())
+		velocidad.x = 0
 	#impulso
 	if get_node('Sprite').is_flipped_h():
 		velocidad.x -= velocidad_mov
