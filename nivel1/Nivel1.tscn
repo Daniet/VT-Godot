@@ -74,12 +74,12 @@ extents = Vector2( 31.9495, 31.8852 )
 custom_solver_bias = 0.0
 extents = Vector2( 64.2746, 64.0595 )
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=9]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=10]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
@@ -318,7 +318,7 @@ _update_shape_index = 0
 editor/display_folded = true
 transform/pos = Vector2( 309.141, 266.054 )
 input/pickable = true
-shapes/0/shape = SubResource( 10 )
+shapes/0/shape = SubResource( 9 )
 shapes/0/transform = Matrix32( 0.726468, 0, 0, 1.23004, 3.47598, 4.2365 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -339,7 +339,7 @@ frame = 31
 
 transform/pos = Vector2( 3.47598, 4.2365 )
 transform/scale = Vector2( 0.726468, 1.23004 )
-shape = SubResource( 10 )
+shape = SubResource( 9 )
 trigger = false
 _update_shape_index = 0
 
@@ -350,7 +350,7 @@ _update_shape_index = 0
 editor/display_folded = true
 transform/pos = Vector2( 363.164, 363.379 )
 input/pickable = false
-shapes/0/shape = SubResource( 9 )
+shapes/0/shape = SubResource( 10 )
 shapes/0/transform = Matrix32( 3.22783, 0, 0, 3.19481, -10.9465, -11.4143 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -373,7 +373,7 @@ hframes = 9
 
 transform/pos = Vector2( -10.9465, -11.4143 )
 transform/scale = Vector2( 3.22783, 3.19481 )
-shape = SubResource( 9 )
+shape = SubResource( 10 )
 trigger = false
 _update_shape_index = 0
 
