@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10, 10 )
+extents = Vector2( 38.8859, 38.5699 )
 
 [node name="HongoR" type="RigidBody2D"]
 
@@ -13,7 +13,7 @@ transform/pos = Vector2( 120.073, 356.013 )
 transform/scale = Vector2( 4, 4 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 0.806592, 0, 0, 0.847956, 3.97743, -1.11164 )
+shapes/0/transform = Matrix32( 0.806592, 0, 0, 0.847956, 11.667, -1.11164 )
 shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
@@ -35,6 +35,9 @@ damp_override/angular = -1.0
 
 [node name="Sprite" type="Sprite" parent="."]
 
+visibility/behind_parent = true
+transform/pos = Vector2( -4.21221, 0.716972 )
+transform/scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 vframes = 4
 hframes = 9
@@ -42,7 +45,7 @@ frame = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
-transform/pos = Vector2( 3.97743, -1.11164 )
+transform/pos = Vector2( 11.667, -1.11164 )
 transform/scale = Vector2( 0.806592, 0.847956 )
 shape = SubResource( 1 )
 trigger = false
